@@ -1,6 +1,6 @@
 'use server'
 
-import { handleAddToWatchListRequest } from '@/app/api/movies/addToWatchListService';
+import { handleAddToWatchListRequest } from '@/app/api/movies/addToWatchListFunction';
 
 export async function addToWatchlistAction(formData: FormData) {
     await new Promise(resolve => setTimeout(resolve, 3000));

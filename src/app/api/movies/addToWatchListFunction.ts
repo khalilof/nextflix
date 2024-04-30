@@ -3,6 +3,8 @@ import addData from '@/app/firebase/addDoc';
 const watchListCollection = 'khalil-watchlist';
 
 export async function handleAddToWatchListRequest(movieId: string) {
+
+    // call IMDB API to fetch movie infos
     const movieAPIResponse = await fetch(getMovieByIdAPI(movieId));
     const movie = await movieAPIResponse.json();
 

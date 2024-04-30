@@ -1,13 +1,11 @@
 import { NextResponse } from 'next/server';
-import getCollection from '@/app/firebase/getCollection';
-import { handleAddToWatchListRequest } from '@/app/api/movies/addToWatchListService';
+import { handleAddToWatchListRequest } from '@/app/api/movies/addToWatchListFunction';
+import { getWatchList } from '@/app/api/movies/getWatchListFunction';
 
-const watchListCollection = 'khalil-watchlist';
-
-
-
+// ACCEPT HTTP CALLS for POST: api/movies
 export async function POST(request: Request) {
     const body = await request.json();
+    // call Firebase to add new movie to my watchlist
     const {result, error} = await handleAddToWatchListRequest(body.new_movie);
 
     if (error) {
@@ -16,17 +14,14 @@ export async function POST(request: Request) {
     return NextResponse.json({result});
 }
 
-
+// ACCEPT HTTP CALLS for GET: api/movies
 export async function GET(request: Request) {
-    console.log('getting the watch list collection: ')
-    const { result, error } = await getCollection(watchListCollection);
-    console.log(result);
-
+    // call Firebase to fetch my watchList
+    const { result, error } = await getWatchList();
 
     if (error) {
         return console.log(error);
     }
-
     return NextResponse.json({my_movies: result});
 }
 
