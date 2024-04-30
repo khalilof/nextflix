@@ -1,0 +1,26 @@
+@startuml
+actor User
+participant "Next.js App" as NextJS
+participant "IMDB API" as IMDB
+participant "Firebase Database" as Firebase
+
+User -> NextJS: Search and add movie to watch list
+activate NextJS
+NextJS -> NextJS: Call Next.js API handler with movie ID
+activate NextJS
+NextJS -> IMDB: Request movie info with movie ID
+activate IMDB
+IMDB -> IMDB: Fetch movie info
+activate IMDB
+IMDB --> NextJS: Return movie info
+deactivate IMDB
+NextJS -> NextJS: Map movie info to watchlist model
+activate NextJS
+NextJS -> Firebase: Save movie info to database
+activate Firebase
+Firebase --> NextJS: Confirmation
+deactivate Firebase
+deactivate NextJS
+deactivate NextJS
+User <-- NextJS: Watch list updated
+@enduml
