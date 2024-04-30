@@ -1,6 +1,4 @@
 import { NextResponse } from 'next/server';
-import { getMovieByIdAPI } from '@/app/helper/ApiURLFactory';
-import addData from '@/app/firebase/addDoc';
 import getCollection from '@/app/firebase/getCollection';
 import { handleAddToWatchListRequest } from '@/app/api/movies/addToWatchListService';
 
@@ -21,6 +19,8 @@ export async function POST(request: Request) {
 
 export async function GET(request: Request) {
     const { result, error } = await getCollection(watchListCollection);
+    console.log('getting the watch list collection: ')
+    console.log(result);
 
 
     if (error) {

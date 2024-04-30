@@ -3,15 +3,23 @@ import { Suspense } from 'react';
 
 
 export default async function WatchList() {
+
+    console.log('init WatchList..:  ')
+
     let apiURL = '';
     if (process.env.NEXT_PUBLIC_VERCEL_URL) {
+        console.log('process.env.NEXT_PUBLIC_VERCEL_URL WatchList..:  ', process.env.NEXT_PUBLIC_VERCEL_URL)
         apiURL = `https://${process.env.NEXT_PUBLIC_VERCEL_URL}/api/movies`;
     } else {
         apiURL = 'http://localhost:3000/api/movies';
     }
+
      const getMyMovies = await fetch(apiURL, {
          method: 'GET',
          cache: 'no-store'});
+    console.log('response start: ');
+    console.log(getMyMovies);
+    console.log('response end: ');
      const myWatchList = (await getMyMovies.json()).my_movies;
 
 
