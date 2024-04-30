@@ -18,8 +18,8 @@ export async function POST(request: Request) {
 
 
 export async function GET(request: Request) {
-    const { result, error } = await getCollection(watchListCollection);
     console.log('getting the watch list collection: ')
+    const { result, error } = await getCollection(watchListCollection);
     console.log(result);
 
 
