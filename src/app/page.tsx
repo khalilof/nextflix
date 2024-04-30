@@ -6,19 +6,16 @@ export default async function Home({searchParams}: {
   searchParams?: { [key: string]: string };
 })  {
   let movies = [];
-  if(searchParams) {
-    let search = searchParams['search'];
-    if (search && search.length <= 0) {
-        search = 'interstellar';
-    }
+  let search = 'interstellar';
+
+  if(searchParams && searchParams['search']) {
+    search = searchParams['search'];
+  }
     if(search) {
-      const moviesResponse = await fetch(searchMovieAPI(search));
-      movies = (await moviesResponse.json()).results;
+        const moviesResponse = await fetch(searchMovieAPI(search));
+        movies = (await moviesResponse.json()).results;
     }
 
-  } else {
-    throw new Error('no params read');
-  }
   return (
       <main className="home-page">
         <div className="container">
