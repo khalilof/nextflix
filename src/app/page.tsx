@@ -1,3 +1,5 @@
+import { Counter } from '@/app/components/Counter';
+
 export const dynamic = 'force-dynamic';
 import MovieCard from '@/app/components/MovieCard';
 import { searchMovieAPI } from '@/app/helper/ApiURLFactory';
@@ -18,6 +20,7 @@ export default async function Home({searchParams}: {
 
   return (
       <main className="home-page">
+          {/* <Counter />*/}
         <div className="container">
           <form>
             <input type="text" aria-label="Search Movie" placeholder="Search Movie..." name="search"/>
@@ -38,6 +41,7 @@ export default async function Home({searchParams}: {
               : <h2 className="nothing-to-show">Nothing to show</h2>
           }
         </div>
+
       </main>
   )
 }

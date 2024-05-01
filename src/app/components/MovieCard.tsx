@@ -12,7 +12,6 @@ export default function MovieCard({title, release_date, poster_path, overview, i
                 alt={ title }
                 width={ 320 }
                 height={ 480 }
-                layout="responsive"
                 placeholder='blur'
                 blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8b8RQDwAFGwGyY6GjKAAAAABJRU5ErkJggg=="
                 className="object-cover"
